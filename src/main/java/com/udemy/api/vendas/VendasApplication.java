@@ -27,12 +27,12 @@ public class VendasApplication implements CommandLineRunner {
 	
 	@Override
 	public void run(String... args) throws Exception {
-		Cliente  c1 = new Cliente("Teste 1");		
-		Cliente  c2 = new Cliente("Teste 2");		
-		Cliente  c3 = new Cliente("Teste 3");		
-		Cliente  c4 = new Cliente("Teste 4");		
-		Cliente  c5 = new Cliente("Teste 5");		
-		Cliente  c6 = new Cliente("Teste 6");	
+		Cliente  c1 = new Cliente("Teste 1", "042.771.491-54");		
+		Cliente  c2 = new Cliente("Testando 2", "042.771.491-54");		
+		Cliente  c3 = new Cliente("Absbsb 3", "042.771.491-54");		
+		Cliente  c4 = new Cliente("Boodod d odkod 4", "042.771.491-54");		
+		Cliente  c5 = new Cliente("Oppdpodo odo od 5", "042.771.491-54");		
+		Cliente  c6 = new Cliente("Rririm dfmifm 6", "042.771.491-54");		
 		
 		clienteResource.salvarClientes(Arrays.asList(c1, c2, c3, c4, c5, c6));
 

@@ -10,7 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+//import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -24,18 +26,22 @@ public class Cliente implements Serializable{
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     private String nome; 
+    private String cpf;
 
     //Um cliente tem muitos pedidos (trazer todos os pedidos do cliente)
     //fetch = FetchType.LAZY - Trazer os clientes sem pedidos
-    @JsonManagedReference
+    //@JsonManagedReference
+    @JsonIgnore
     @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
     private List<Pedido> pedido;    
 
-    public Cliente(String nome){
+    public Cliente(String nome, String cpf){
         this.nome = nome;
+        this.cpf = cpf;
     }
-    public Cliente(Integer id, String nome){
+    public Cliente(Integer id, String nome, String cpf){
         this.id = id;
+        this.cpf = cpf;
         this.nome = nome;
     }
     // Acessar os pedidos do cliente
