@@ -1,13 +1,13 @@
 package com.udemy.api.vendas;
 
 import java.math.BigDecimal;
-import java.time.LocalDate;
 import java.util.Arrays;
 
 import com.udemy.api.vendas.domain.entity.Cliente;
-import com.udemy.api.vendas.domain.entity.Pedido;
-import com.udemy.api.vendas.domain.resource.ClienteResource;
-import com.udemy.api.vendas.domain.resource.PedidoResource;
+import com.udemy.api.vendas.domain.entity.Produto;
+import com.udemy.api.vendas.domain.rest.controller.ClienteController;
+import com.udemy.api.vendas.domain.rest.controller.ProdutoController;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -17,10 +17,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class VendasApplication implements CommandLineRunner {
 	
 	@Autowired
-	private ClienteResource clienteResource;
+	private ClienteController clienteResource;
 
 	@Autowired
-	private PedidoResource pedidoResource;
+	private ProdutoController produtoResource;
 	public static void main(String[] args) {
 		SpringApplication.run(VendasApplication.class, args);
 	}
@@ -36,13 +36,13 @@ public class VendasApplication implements CommandLineRunner {
 		
 		clienteResource.salvarClientes(Arrays.asList(c1, c2, c3, c4, c5, c6));
 
-		Pedido p1 = new Pedido(c1, LocalDate.now(), BigDecimal.valueOf(200.50));
-		Pedido p2 = new Pedido(c1, LocalDate.now(), BigDecimal.valueOf(200.90));
-		Pedido p3 = new Pedido(c2, LocalDate.now(), BigDecimal.valueOf(200.50));
-		Pedido p4 = new Pedido(c3, LocalDate.now(), BigDecimal.valueOf(200.99));
-		Pedido p5 = new Pedido(c4, LocalDate.now(), BigDecimal.valueOf(1.99));
-		Pedido p6 = new Pedido(c5, LocalDate.now(), BigDecimal.valueOf(900.00));
+		Produto pro1 = new Produto("TV Smart 59", BigDecimal.valueOf(20000.50));
+		Produto pro2 = new Produto("TV Smart", BigDecimal.valueOf(2000.90));
+		Produto pro3 = new Produto("TV AOC 59", BigDecimal.valueOf(2000.50));
+		Produto pro4 = new Produto("Monitor 59", BigDecimal.valueOf(2000.99));
+		Produto pro5 = new Produto("CPU 5Ghz", BigDecimal.valueOf(1990.00));
+		Produto pro6 = new Produto("TV Samsung 99", BigDecimal.valueOf(9000.00));
 
-		pedidoResource.salvarPedidos(Arrays.asList(p1, p2, p3, p4, p5, p6));  
+		produtoResource.salvarProdutos(Arrays.asList(pro1, pro2, pro3, pro4, pro5, pro6));
 	}
 }
